@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c420xmtnci338"]
+
+[ext_resource type="Script" uid="uid://dq756ydjgyxmj" path="res://scenes/letter_cell.gd" id="1_nen20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_me6pk"]
+bg_color = Color(0.19076231, 0.19076234, 0.19076225, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_2yfux"]
+font_size = 32
+
+[node name="LetterPanel" type="Panel" unique_id=302729284]
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_me6pk")
+script = ExtResource("1_nen20")
+
+[node name="Label" type="Label" parent="." unique_id=2111031058]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_2yfux")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
