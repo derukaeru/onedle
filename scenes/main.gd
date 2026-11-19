@@ -12,6 +12,7 @@ var answers: Array[String] = []
 @onready var correct_answer: Label = $container/end_screen/WrongPanel/correct_answer
 @onready var correct_panel: Panel = $container/end_screen/CorrectPanel
 @onready var wrong_panel: Panel = $container/end_screen/WrongPanel
+@onready var correct_particle: GPUParticles2D = $container/correct_particle
 
 var letter_boxes: Array[Panel] = []
 
@@ -96,21 +97,24 @@ func reveal_guess() -> void:
 	
 	await get_tree().create_timer(0.2).timeout
 	
-	if guesses <= 0:
-		await get_tree().create_timer(1.0).timeout
+	if current_guess == answer:
+		await get_tree().create_timer(0.8).timeout
+		
+		end_screen.show()
+		correct_panel.show()
+		was_correct = true
+		can_type = false
+		
+		end_screen_animation.play("open_correct")
+		await end_screen_animation.animation_finished
+		correct_particle.emitting = true
+	elif guesses <= 0:
+		await get_tree().create_timer(0.8).timeout
 		end_screen.show()
 		wrong_panel.show()
 		end_screen_animation.play("open_wrong")
 		correct_answer.text = "Answer: " + answer.to_upper()
 		was_correct = false
-		
-		can_type = false
-	elif current_guess == answer:
-		await get_tree().create_timer(1.0).timeout
-		end_screen.show()
-		correct_panel.show()
-		end_screen_animation.play("open_correct")
-		was_correct = true
 		
 		can_type = false
 	else:

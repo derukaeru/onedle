@@ -5,11 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cascumfymt32d" path="res://scenes/keyboard_button.tscn" id="3_sugp2"]
 [ext_resource type="Texture2D" uid="uid://cn6w52xbd6vbe" path="res://assets/backspace.png" id="4_jyhfs"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_o5qli"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_2yfux"]
-font_size = 80
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6sjv"]
 bg_color = Color(0.6901961, 0.6901961, 0.6901961, 1)
 corner_radius_top_left = 4
@@ -27,6 +22,11 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_o5qli"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2yfux"]
+font_size = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
 bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
@@ -226,6 +226,35 @@ _data = {
 &"invalid": SubResource("Animation_tbgi4")
 }
 
+[sub_resource type="Curve" id="Curve_la05k"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.8009634, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jyhfs"]
+curve = SubResource("Curve_la05k")
+
+[sub_resource type="Gradient" id="Gradient_tbgi4"]
+offsets = PackedFloat32Array(0, 0.18852459, 0.44262296, 0.6803279, 1)
+colors = PackedColorArray(0.7451458, 0.2914203, 0.901851, 1, 0.2717872, 0.62342125, 0.96625394, 1, 0.34619194, 0.7234108, 0.264187, 1, 0.75812733, 0.2185229, 0.2769335, 1, 0.77, 0.74381995, 0.24639998, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ifoc3"]
+gradient = SubResource("Gradient_tbgi4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2yfux"]
+particle_flag_disable_z = true
+angle_min = -147.09999
+angle_max = 46.50001
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 48.39
+initial_velocity_max = 236.54999
+angular_velocity_min = -147.1
+angular_velocity_max = 100.64998
+gravity = Vector3(0, 64, 0)
+scale_min = 8.0
+scale_max = 24.0
+color_initial_ramp = SubResource("GradientTexture1D_ifoc3")
+alpha_curve = SubResource("CurveTexture_jyhfs")
+
 [node name="main" type="Control" unique_id=2080182620]
 layout_mode = 3
 anchors_preset = 15
@@ -243,6 +272,208 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="keyboard" type="Control" parent="container" unique_id=468088308]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="container/keyboard" unique_id=2115522868]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = 263.0
+offset_right = 253.0
+offset_bottom = 307.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="KeyboardButton" parent="container/keyboard/HBoxContainer" unique_id=494471053 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "q"
+
+[node name="KeyboardButton2" parent="container/keyboard/HBoxContainer" unique_id=299556770 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "w"
+
+[node name="KeyboardButton3" parent="container/keyboard/HBoxContainer" unique_id=1613217097 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "e"
+
+[node name="KeyboardButton4" parent="container/keyboard/HBoxContainer" unique_id=286046811 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "r"
+
+[node name="KeyboardButton5" parent="container/keyboard/HBoxContainer" unique_id=1785529937 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "t"
+
+[node name="KeyboardButton6" parent="container/keyboard/HBoxContainer" unique_id=878212017 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "y"
+
+[node name="KeyboardButton7" parent="container/keyboard/HBoxContainer" unique_id=1657078085 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "u"
+
+[node name="KeyboardButton8" parent="container/keyboard/HBoxContainer" unique_id=1292940265 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "i"
+
+[node name="KeyboardButton9" parent="container/keyboard/HBoxContainer" unique_id=2060678964 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "o"
+
+[node name="KeyboardButton10" parent="container/keyboard/HBoxContainer" unique_id=272039666 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "p"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="container/keyboard" unique_id=1811644347]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = 312.0
+offset_right = 225.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="KeyboardButton" parent="container/keyboard/HBoxContainer2" unique_id=1797780752 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "a"
+
+[node name="KeyboardButton2" parent="container/keyboard/HBoxContainer2" unique_id=1415792 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "s"
+
+[node name="KeyboardButton3" parent="container/keyboard/HBoxContainer2" unique_id=1480535118 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "d"
+
+[node name="KeyboardButton4" parent="container/keyboard/HBoxContainer2" unique_id=319196590 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "f"
+
+[node name="KeyboardButton5" parent="container/keyboard/HBoxContainer2" unique_id=1000190877 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "g"
+
+[node name="KeyboardButton6" parent="container/keyboard/HBoxContainer2" unique_id=54928198 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "h"
+
+[node name="KeyboardButton7" parent="container/keyboard/HBoxContainer2" unique_id=256731509 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "j"
+
+[node name="KeyboardButton8" parent="container/keyboard/HBoxContainer2" unique_id=349901319 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "k"
+
+[node name="KeyboardButton9" parent="container/keyboard/HBoxContainer2" unique_id=371264513 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "l"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="container/keyboard" unique_id=1174296772]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = 361.0
+offset_right = 148.0
+offset_bottom = 405.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="KeyboardButton" parent="container/keyboard/HBoxContainer3" unique_id=46219272 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "z"
+
+[node name="KeyboardButton2" parent="container/keyboard/HBoxContainer3" unique_id=910759630 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "x"
+
+[node name="KeyboardButton3" parent="container/keyboard/HBoxContainer3" unique_id=120763076 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "c"
+
+[node name="KeyboardButton4" parent="container/keyboard/HBoxContainer3" unique_id=727472044 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "v"
+
+[node name="KeyboardButton5" parent="container/keyboard/HBoxContainer3" unique_id=344965299 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "b"
+
+[node name="KeyboardButton6" parent="container/keyboard/HBoxContainer3" unique_id=1174457183 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "n"
+
+[node name="KeyboardButton7" parent="container/keyboard/HBoxContainer3" unique_id=1071672790 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+letter = "m"
+
+[node name="enter" type="Panel" parent="container/keyboard" unique_id=1347874310]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 813.0
+offset_right = 690.0
+offset_bottom = 857.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o6sjv")
+
+[node name="Label" type="Label" parent="container/keyboard/enter" unique_id=2122553799]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "enter"
+label_settings = SubResource("LabelSettings_sugp2")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="backspace" type="Panel" parent="container/keyboard" unique_id=1272072465]
+layout_mode = 0
+offset_left = 677.0
+offset_top = 764.0
+offset_right = 724.0
+offset_bottom = 808.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yfux")
+
+[node name="TextureRect" type="TextureRect" parent="container/keyboard/backspace" unique_id=1647502745]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -18.0
+offset_right = 16.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_jyhfs")
+expand_mode = 1
 
 [node name="letters" type="HBoxContainer" parent="container" unique_id=1352788426]
 layout_mode = 1
@@ -335,200 +566,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="container" unique_id=1277215427]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -252.0
-offset_top = 263.0
-offset_right = 253.0
-offset_bottom = 307.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-
-[node name="KeyboardButton" parent="container/HBoxContainer" unique_id=494471053 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "q"
-
-[node name="KeyboardButton2" parent="container/HBoxContainer" unique_id=973996488 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "w"
-
-[node name="KeyboardButton3" parent="container/HBoxContainer" unique_id=1787761206 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "e"
-
-[node name="KeyboardButton4" parent="container/HBoxContainer" unique_id=1758902526 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "r"
-
-[node name="KeyboardButton5" parent="container/HBoxContainer" unique_id=1447250980 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "t"
-
-[node name="KeyboardButton6" parent="container/HBoxContainer" unique_id=1262024029 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "y"
-
-[node name="KeyboardButton7" parent="container/HBoxContainer" unique_id=460080830 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "u"
-
-[node name="KeyboardButton8" parent="container/HBoxContainer" unique_id=871269646 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "i"
-
-[node name="KeyboardButton9" parent="container/HBoxContainer" unique_id=543824488 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "o"
-
-[node name="KeyboardButton10" parent="container/HBoxContainer" unique_id=175285462 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "p"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="container" unique_id=1684081443]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -229.0
-offset_top = 312.0
-offset_right = 225.0
-offset_bottom = 356.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-
-[node name="KeyboardButton" parent="container/HBoxContainer2" unique_id=1598650720 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "a"
-
-[node name="KeyboardButton2" parent="container/HBoxContainer2" unique_id=1141038749 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "s"
-
-[node name="KeyboardButton3" parent="container/HBoxContainer2" unique_id=1524257424 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "d"
-
-[node name="KeyboardButton4" parent="container/HBoxContainer2" unique_id=963252691 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "f"
-
-[node name="KeyboardButton5" parent="container/HBoxContainer2" unique_id=1187082870 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "g"
-
-[node name="KeyboardButton6" parent="container/HBoxContainer2" unique_id=1217924823 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "h"
-
-[node name="KeyboardButton7" parent="container/HBoxContainer2" unique_id=577485959 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "j"
-
-[node name="KeyboardButton8" parent="container/HBoxContainer2" unique_id=2048996317 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "k"
-
-[node name="KeyboardButton9" parent="container/HBoxContainer2" unique_id=557727240 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "l"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="container" unique_id=1785750024]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -204.0
-offset_top = 361.0
-offset_right = 148.0
-offset_bottom = 405.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-
-[node name="KeyboardButton" parent="container/HBoxContainer3" unique_id=1199240432 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "z"
-
-[node name="KeyboardButton2" parent="container/HBoxContainer3" unique_id=1226687775 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "x"
-
-[node name="KeyboardButton3" parent="container/HBoxContainer3" unique_id=250722647 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "c"
-
-[node name="KeyboardButton4" parent="container/HBoxContainer3" unique_id=56919152 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "v"
-
-[node name="KeyboardButton5" parent="container/HBoxContainer3" unique_id=852988933 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "b"
-
-[node name="KeyboardButton6" parent="container/HBoxContainer3" unique_id=343577987 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "n"
-
-[node name="KeyboardButton7" parent="container/HBoxContainer3" unique_id=881564933 instance=ExtResource("3_sugp2")]
-layout_mode = 2
-letter = "m"
-
-[node name="enter" type="Panel" parent="container" unique_id=239673479]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 813.0
-offset_right = 690.0
-offset_bottom = 857.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_o6sjv")
-
-[node name="Label" type="Label" parent="container/enter" unique_id=1809242126]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "enter"
-label_settings = SubResource("LabelSettings_sugp2")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="backspace" type="Panel" parent="container" unique_id=814153548]
-layout_mode = 0
-offset_left = 677.0
-offset_top = 764.0
-offset_right = 724.0
-offset_bottom = 808.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_2yfux")
-
-[node name="TextureRect" type="TextureRect" parent="container/backspace" unique_id=436844232]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.5
-offset_top = -18.0
-offset_right = 16.5
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_jyhfs")
-expand_mode = 1
-
 [node name="end_screen" type="Control" parent="container" unique_id=414916330]
 visible = false
 layout_mode = 1
@@ -586,7 +623,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WrongPanel" type="Panel" parent="container/end_screen" unique_id=2033127660]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -660,9 +696,19 @@ libraries/ = SubResource("AnimationLibrary_tipki")
 [node name="LettersAnimationPlayer" type="AnimationPlayer" parent="container" unique_id=1517616575]
 libraries/ = SubResource("AnimationLibrary_tefeu")
 
+[node name="correct_particle" type="GPUParticles2D" parent="container" unique_id=1887445917]
+position = Vector2(453, 526)
+emitting = false
+amount = 32
+lifetime = 6.0
+one_shot = true
+speed_scale = 1.95
+explosiveness = 0.94
+randomness = 0.9
+process_material = SubResource("ParticleProcessMaterial_2yfux")
+
+[connection signal="gui_input" from="container/keyboard/enter" to="." method="enter"]
+[connection signal="gui_input" from="container/keyboard/backspace" to="." method="backspace"]
 [connection signal="pressed" from="container/continue" to="." method="clear"]
-[connection signal="gui_input" from="container/enter" to="." method="enter"]
-[connection signal="gui_input" from="container/backspace" to="." method="backspace"]
-[connection signal="gui_input" from="container/backspace" to="." method="remove_letter"]
 [connection signal="pressed" from="container/end_screen/CorrectPanel/restart" to="." method="restart"]
 [connection signal="pressed" from="container/end_screen/WrongPanel/restart" to="." method="restart"]
