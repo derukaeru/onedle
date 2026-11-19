@@ -1,6 +1,7 @@
 extends Panel
 
 @onready var label: Label = $Label
+@onready var animation: AnimationPlayer = $AnimationPlayer
 var letter: String = ""
 
 func set_letter(value: String) -> void:
@@ -18,3 +19,19 @@ func set_color(color: Color) -> void:
 	style.corner_radius_top_right = 4
 	
 	add_theme_stylebox_override("panel", style)
+
+func reveal_letter(index: int, answer: String) -> void:
+	animation.play("hide")
+	await animation.animation_finished
+	
+	if answer[index] == letter.to_lower():
+		set_color("68af4c")
+	elif answer.contains(letter.to_lower()):
+		set_color("a89c48")
+	else:
+		set_color("3f3f3f")
+	
+	animation.play("reveal")
+
+func reset() -> void:
+	pass

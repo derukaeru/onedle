@@ -28,6 +28,56 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4a08"]
+bg_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_t4a08"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_la05k"]
+font_size = 40
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("letters:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 393.625)]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "invalid"
+length = 0.27999999999999997
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("letters:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0012258952, 0.060136676, 0.11978428, 0.18172555, 0.233416, 0.27892563),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(192, 393.625), Vector2(206, 394), Vector2(167, 394), Vector2(206, 394), Vector2(167, 394), Vector2(192, 393.625)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tefeu"]
+_data = {
+&"RESET": SubResource("Animation_jyhfs"),
+&"invalid": SubResource("Animation_tbgi4")
+}
+
 [node name="main" type="Control" unique_id=2080182620]
 layout_mode = 3
 anchors_preset = 15
@@ -79,6 +129,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="continue" type="Button" parent="container" unique_id=874785762]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -329,6 +380,86 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_jyhfs")
 expand_mode = 1
+
+[node name="end_screen" type="Control" parent="container" unique_id=414916330]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="container/end_screen" unique_id=2033127660]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.25
+offset_top = -174.0
+offset_right = 324.25
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4a08")
+
+[node name="restart" type="Button" parent="container/end_screen/Panel" unique_id=1834414166]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = -91.0
+offset_right = 92.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 24
+text = "restart"
+
+[node name="answer" type="Label" parent="container/end_screen/Panel" unique_id=1346167575]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = 4.5
+offset_right = 119.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Answer: QUICK"
+label_settings = SubResource("LabelSettings_t4a08")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lose" type="Label" parent="container/end_screen/Panel" unique_id=1406414862]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.0
+offset_top = -129.5
+offset_right = 254.0
+offset_bottom = -88.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Too bad! You can try again"
+label_settings = SubResource("LabelSettings_la05k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LettersAnimationPlayer" type="AnimationPlayer" parent="container" unique_id=1517616575]
+libraries/ = SubResource("AnimationLibrary_tefeu")
 
 [connection signal="gui_input" from="container/enter" to="." method="enter"]
 [connection signal="gui_input" from="container/backspace" to="." method="backspace"]
