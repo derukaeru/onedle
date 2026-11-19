@@ -28,8 +28,18 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_ifoc3"]
+font_size = 32
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4a08"]
-bg_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -40,6 +50,144 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_la05k"]
 font_size = 40
+
+[sub_resource type="Animation" id="Animation_tefeu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WrongPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(123.75, 278)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WrongPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CorrectPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(124, 278)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CorrectPanel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tipki"]
+resource_name = "open_correct"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CorrectPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(124, 696), Vector2(124, 278)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CorrectPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WrongPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(124, 941), Vector2(124, 941)]
+}
+
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "open"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WrongPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(124, 638), Vector2(123.75, 278)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WrongPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CorrectPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(124, 934), Vector2(124, 934)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tipki"]
+_data = {
+&"RESET": SubResource("Animation_tefeu"),
+&"open_correct": SubResource("Animation_tipki"),
+&"open_wrong": SubResource("Animation_o6xl0")
+}
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -161,7 +309,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
-text = "GUESSES: 6"
+text = "Guesses: 6"
 label_settings = SubResource("LabelSettings_o5qli")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -390,7 +538,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="container/end_screen" unique_id=2033127660]
+[node name="CorrectPanel" type="Panel" parent="container/end_screen" unique_id=925837582]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -174.0
+offset_right = 324.25
+offset_bottom = 198.99982
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jyhfs")
+
+[node name="restart" type="Button" parent="container/end_screen/CorrectPanel" unique_id=1697718630]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.125
+offset_top = -110.99982
+offset_right = 75.875
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "RESTART"
+
+[node name="Label" type="Label" parent="container/end_screen/CorrectPanel" unique_id=1331544034]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -220.125
+offset_top = 83.0
+offset_right = 220.875
+offset_bottom = 116.0
+grow_horizontal = 2
+text = "Good Job! You got it correct!"
+label_settings = SubResource("LabelSettings_ifoc3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WrongPanel" type="Panel" parent="container/end_screen" unique_id=2033127660]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -400,12 +596,12 @@ anchor_bottom = 0.5
 offset_left = -324.25
 offset_top = -174.0
 offset_right = 324.25
-offset_bottom = 199.0
+offset_bottom = 199.00049
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_t4a08")
 
-[node name="restart" type="Button" parent="container/end_screen/Panel" unique_id=1834414166]
+[node name="restart" type="Button" parent="container/end_screen/WrongPanel" unique_id=1834414166]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -420,9 +616,9 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 24
-text = "restart"
+text = "Restart"
 
-[node name="answer" type="Label" parent="container/end_screen/Panel" unique_id=1346167575]
+[node name="correct_answer" type="Label" parent="container/end_screen/WrongPanel" unique_id=1346167575]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -440,7 +636,7 @@ label_settings = SubResource("LabelSettings_t4a08")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="lose" type="Label" parent="container/end_screen/Panel" unique_id=1406414862]
+[node name="lose" type="Label" parent="container/end_screen/WrongPanel" unique_id=1406414862]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -458,9 +654,15 @@ label_settings = SubResource("LabelSettings_la05k")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="container/end_screen" unique_id=105359471]
+libraries/ = SubResource("AnimationLibrary_tipki")
+
 [node name="LettersAnimationPlayer" type="AnimationPlayer" parent="container" unique_id=1517616575]
 libraries/ = SubResource("AnimationLibrary_tefeu")
 
+[connection signal="pressed" from="container/continue" to="." method="clear"]
 [connection signal="gui_input" from="container/enter" to="." method="enter"]
 [connection signal="gui_input" from="container/backspace" to="." method="backspace"]
 [connection signal="gui_input" from="container/backspace" to="." method="remove_letter"]
+[connection signal="pressed" from="container/end_screen/CorrectPanel/restart" to="." method="restart"]
+[connection signal="pressed" from="container/end_screen/WrongPanel/restart" to="." method="restart"]
