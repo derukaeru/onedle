@@ -25,13 +25,18 @@ func reveal_letter(index: int, answer: String) -> void:
 	await animation.animation_finished
 	
 	if answer[index] == letter.to_lower():
-		set_color("68af4c")
+		set_color(Color("68af4c"))
 	elif answer.contains(letter.to_lower()):
-		set_color("a89c48")
+		set_color(Color("#a89c48"))
 	else:
-		set_color("3f3f3f")
+		set_color(Color("#313131"))
 	
 	animation.play("reveal")
 
 func reset() -> void:
-	pass
+	animation.play("clear")
+	await animation.animation_finished
+	
+	set_color(Color("313131"))
+	set_letter("")
+	animation.play("RESET")

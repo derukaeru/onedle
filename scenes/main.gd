@@ -6,7 +6,7 @@ var answers: Array[String] = []
 @onready var letters: HBoxContainer = $container/letters
 @onready var end_screen: Control = $container/end_screen
 @onready var continue_button: Button = $container/continue
-
+@onready var guesses_label: Label = $container/guesses
 @onready var letters_animation: AnimationPlayer = $container/LettersAnimationPlayer
 
 var letter_boxes: Array[Panel] = []
@@ -41,7 +41,10 @@ func _input(event: InputEvent) -> void:
 		elif event.keycode == KEY_BACKSPACE and can_type:
 			remove_letter()
 		elif event.keycode == KEY_ENTER:
-			submit_guess()
+			if can_type:
+				submit_guess()
+			else: 
+				clear()
 
 func set_letter(letter: String) -> void:
 	add_letter(letter)
@@ -76,12 +79,14 @@ func submit_guess() -> void:
 		
 	guesses -= 1
 	reveal_guess()
-	can_type = false
 	
 	# if not guessed correct and no guesses left
 	if guesses <= 0:
 		# lose
 		pass
+		
+	can_type = false
+	guesses_label.text = "GUESSES: %d" % guesses
 
 func reveal_guess() -> void:
 	for i in range(word_length):
@@ -97,7 +102,10 @@ func backspace(event: InputEvent) -> void:
 
 func enter(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and not event.is_echo():
-		submit_guess()
+		if can_type:
+			submit_guess()
+		else:
+			clear()
 
 func load_word_list(dir: String, dictionary: Dictionary = {}) -> Array[String]:
 	var words: Array[String] = []
@@ -123,4 +131,8 @@ func new_word() -> void:
 
 func clear() -> void:
 	for i in range(word_length):
-		pass
+		await get_tree().create_timer(0.1).timeout
+		letter_boxes[i].reset()
+	
+	can_type = true
+	current_guess = ""
