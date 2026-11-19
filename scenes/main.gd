@@ -1,5 +1,8 @@
 extends Control
 
+var valid_words: Dictionary = {}
+var answers: Array[String] = []
+
 @onready var letters: HBoxContainer = $container/letters
 var letter_boxes: Array[Panel] = []
 
@@ -7,9 +10,13 @@ var word_length: int = 5
 
 var max_guesses: int = 6
 var guesses: int = max_guesses
+
 var current_guess: String = ""
+var answer: String = ""
 
 func _ready() -> void:
+	load_word_list("res://data/valid_words.txt", valid_words)
+	
 	EventManager.key_pressed.connect(set_letter)
 	
 	for box in letters.get_children():
@@ -55,8 +62,33 @@ func submit_guess() -> void:
 
 func backspace(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and not event.is_echo():
-		submit_guess()
+		remove_letter()
 
 func enter(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and not event.is_echo():
-		remove_letter()
+		submit_guess()
+
+func load_word_list(dir: String, dictionary: Dictionary = {}) -> Array[String]:
+	var words: Array[String] = []
+	
+	var file := FileAccess.open(dir, FileAccess.READ)
+	
+	if file == null:
+		push_error("could not read file")
+		return words
+	
+	while not file.eof_reached():
+		var word := file.get_line().strip_edges().to_lower()
+
+		if word.length() != word_length:
+			continue
+			
+		words.append(word)
+		
+		if not dictionary.is_empty():
+			dictionary[word] = true
+	
+	return words
+
+func new_word() -> void:
+	answer = answers.pick_random()

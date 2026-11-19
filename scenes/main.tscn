@@ -331,5 +331,5 @@ texture = ExtResource("4_jyhfs")
 expand_mode = 1
 
 [connection signal="gui_input" from="container/enter" to="." method="enter"]
-[connection signal="gui_input" from="container/backspace" to="." method="remove_letter"]
 [connection signal="gui_input" from="container/backspace" to="." method="backspace"]
+[connection signal="gui_input" from="container/backspace" to="." method="remove_letter"]
